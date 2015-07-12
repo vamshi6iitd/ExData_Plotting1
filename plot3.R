@@ -1,0 +1,8 @@
+raw<-read.table("household_power_consumption.txt",sep=";")
+tidy<-data.frame(rbind(raw[raw[,1]=="1/2/2007",],raw[raw[,1]=="2/2/2007",]))
+png("plot3.png",width=480,height=480)
+plot(as.numeric(as.character(tidy[,7])),type="l",ylab="Energy Sub Metering")
+lines(as.numeric(as.character(tidy[,8])),type="l",ylab="Energy Sub Metering",col="red")
+lines(as.numeric(as.character(tidy[,9])),type="l",ylab="Energy Sub Metering",col="blue")
+legend("topright",pch="-",col=c("black","red","blue"),legend=c("Sub_Metering_1","Sub_Metering_2","Sub_Metering_3"))
+dev.off()
